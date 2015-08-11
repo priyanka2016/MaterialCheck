@@ -5,7 +5,7 @@ public class Material {
 
     public static boolean compareMaterial(Length cm,Length m)
     {
-        if(m.getValue()*Meter.CONVERSION_FACTOR==cm.getValue())
+        if(m.convertToCentimeter().equals(cm.convertToCentimeter()))
         {
             return true;
         }

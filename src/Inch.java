@@ -1,19 +1,18 @@
 /**
- * Created by sai on 10/08/2015.
+ * Created by sai on 11/08/2015.
  */
-public class Meter implements Length{
-
+public class Inch implements Length{
 
     private double value;
-    private static final double CONVERSION_FACTOR=100;
 
-    public Meter()
+    public static final double CONVERSION_FACTOR=100;
+
+    public Inch()
     {
 
     }
-    public Meter(double value) {
+    public Inch(double value) {
         this.value = value;
-
     }
 
     public double getValue() {
@@ -27,10 +26,8 @@ public class Meter implements Length{
     }
 
     @Override
-    public Meter convertTo(Length fromLength) {
+    public Inch convertTo(Length fromLength) {
         Centimeter cm=fromLength.convertToCentimeter();
-        return new Meter(cm.getValue()/CONVERSION_FACTOR);
+        return new Inch(cm.getValue()/CONVERSION_FACTOR);
     }
-
-
 }

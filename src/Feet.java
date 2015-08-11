@@ -1,24 +1,24 @@
 /**
- * Created by sai on 10/08/2015.
+ * Created by sai on 11/08/2015.
  */
-public class Meter implements Length{
-
+public class Feet implements Length {
 
     private double value;
-    private static final double CONVERSION_FACTOR=100;
+    public static final double CONVERSION_FACTOR=100;
 
-    public Meter()
+
+    public Feet()
     {
 
     }
-    public Meter(double value) {
+    public Feet(double value) {
         this.value = value;
-
     }
 
     public double getValue() {
         return value;
     }
+
 
     @Override
     public Centimeter convertToCentimeter() {
@@ -27,10 +27,8 @@ public class Meter implements Length{
     }
 
     @Override
-    public Meter convertTo(Length fromLength) {
+    public Feet convertTo(Length fromLength) {
         Centimeter cm=fromLength.convertToCentimeter();
-        return new Meter(cm.getValue()/CONVERSION_FACTOR);
+        return new Feet(cm.getValue()/CONVERSION_FACTOR);
     }
-
-
 }

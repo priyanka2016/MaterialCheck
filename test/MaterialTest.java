@@ -12,7 +12,21 @@ public class MaterialTest {
     @Test
     public void checkIsMaterialNotEqual()
     {
-        Assert.assertFalse(Material.compareMaterial(new Centimeter(100),new Meter(2)));
+        Assert.assertFalse(Material.compareMaterial(new Centimeter(100), new Meter(2)));
     }
+
+    /*@Test
+    public void checkIsInchToCentimeterConversionCorrect()
+    {
+        //Assert.assertFalse(Material.compareMaterial(new Centimeter(100), new Meter(2)));
+    }
+
+    @Test
+    public void checkIsCentimeterToMeterConversionCorrect()
+    {
+        Centimeter cm=new Centimeter(10000);
+        double expected=100;
+        Assert.assertEquals(cm.convertToMeter(), expected);
+    }*/
 
 }
