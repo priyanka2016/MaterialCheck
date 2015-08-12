@@ -15,6 +15,13 @@ public class MaterialTest {
         Assert.assertFalse(Material.compareMaterial(new Centimeter(100), new Meter(2)));
     }
 
+    @Test
+    public void shouldAddLength()
+    {
+        Length cm=new Centimeter(100);
+        Length m=new Meter(2);
+        Assert.assertEquals(300.00,Material.addMaterial(cm,m).getValue(),0.1);
+    }
     /*@Test
     public void checkIsInchToCentimeterConversionCorrect()
     {

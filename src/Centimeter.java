@@ -30,6 +30,13 @@ public class Centimeter implements Length {
     }
 
     @Override
+    public Length addLength(Length lengthToBeAdded) {
+
+        return new Centimeter(this.convertTo(lengthToBeAdded).getValue()+this.getValue());
+
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

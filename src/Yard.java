@@ -22,6 +22,11 @@ public class Yard implements Length{
         return new Yard(cm.getValue()/CONVERSION_FACTOR);
     }
 
+    @Override
+    public Length addLength(Length lengthToBeAdded) {
+        return new Yard(this.convertTo(lengthToBeAdded).getValue()+this.getValue());
+    }
+
     public Yard()
     {
 

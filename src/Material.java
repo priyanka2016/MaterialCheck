@@ -11,4 +11,9 @@ public class Material {
         }
         return false;
     }
+
+    public static Length addMaterial(Length first,Length second)
+    {
+       return first.addLength(second);
+    }
 }

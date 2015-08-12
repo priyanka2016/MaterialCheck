@@ -20,6 +20,11 @@ public class Inch implements Length{
     }
 
     @Override
+    public Length addLength(Length lengthToBeAdded) {
+        return new Inch(this.convertTo(lengthToBeAdded).getValue()+this.getValue());
+    }
+
+    @Override
     public Centimeter convertToCentimeter() {
         Centimeter l=new Centimeter(value*CONVERSION_FACTOR);
         return l;

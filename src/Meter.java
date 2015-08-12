@@ -21,6 +21,11 @@ public class Meter implements Length{
     }
 
     @Override
+    public Length addLength(Length lengthToBeAdded) {
+        return new Meter(this.convertTo(lengthToBeAdded).getValue()+this.getValue());
+    }
+
+    @Override
     public Centimeter convertToCentimeter() {
         Centimeter l=new Centimeter(value*CONVERSION_FACTOR);
         return l;
