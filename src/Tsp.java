@@ -3,53 +3,37 @@
  */
 public class Tsp extends Volume {
 
-    private double value;
-
-    public Tsp(double value) {
-        this.value = value;
-    }
-
-    @Override
-    public double getValue() {
-
-        return value;
-    }
+    private static final double CONVERSION_FACTOR=1;
 
     public Tsp()
     {
 
     }
+    public Tsp(double value) {
+        super(value);
+    }
+
 
     @Override
-    public Tsp convertToTsp() {
-        return this;
+    public Volume convertToBase() {
+        return new Tsp(this.getValue()*CONVERSION_FACTOR);
     }
 
     @Override
-    public Volume convertTo(Volume fromVolume) {
-        Tsp tsp=fromVolume.convertToTsp();
-        return tsp;
+    public  double getConversionFactor() {
+        return CONVERSION_FACTOR;
     }
 
     @Override
-    public Volume addVolume(Volume volumeToBeAdded) {
-        return new Tsp(this.convertTo(volumeToBeAdded).getValue()+this.getValue());
+    public Volume clone(double value) {
+        return new Tsp(value);
     }
 
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Tsp tsp = (Tsp) o;
+        return Double.compare(tsp.getValue(), getValue()) == 0;
 
-        return Double.compare(tsp.value, value) == 0;
-
-    }
-
-    @Override
-    public int hashCode() {
-        long temp = Double.doubleToLongBits(value);
-        return (int) (temp ^ (temp >>> 32));
     }
 }

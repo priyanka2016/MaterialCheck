@@ -20,7 +20,7 @@ public class ConversionTest {
     public void checkIfNotConvertToInch()
     {
         Length yard=new Yard(12);
-      /* assertNotEquals(13.0, new Inch().convertTo(yard).getValue(),0.1);*/
+      //* assertNotEquals(13.0, new Inch().convertTo(yard).getValue(),0.1);*//*
     }
     @Test
     public void shouldConvertToFeet()
@@ -36,7 +36,7 @@ public class ConversionTest {
         Assert.assertEquals(true,new Meter().convertTo(yard) instanceof Meter);
     }
 
-    /*@Test
+   /* @Test
     public void shouldConvertToInch()
     {
         Length yard=new Yard(12);

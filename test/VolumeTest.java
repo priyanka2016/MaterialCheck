@@ -15,7 +15,7 @@ public class VolumeTest {
     @Test
     public void checkIfVolumeNotEqual()
     {
-        Assert.assertTrue(Volume.compareVolume(new Oz(2),new Tbsp(2)));
+        Assert.assertFalse(Volume.compareVolume(new Oz(2),new Tbsp(2)));
     }
 
     @Test

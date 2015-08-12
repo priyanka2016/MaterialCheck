@@ -1,9 +1,8 @@
 /**
  * Created by sai on 11/08/2015.
  */
-public class Inch implements Length{
+public class Inch extends Length{
 
-    private double value;
 
     public static final double CONVERSION_FACTOR=100;
 
@@ -12,27 +11,22 @@ public class Inch implements Length{
 
     }
     public Inch(double value) {
-        this.value = value;
+        super(value);
     }
 
-    public double getValue() {
-        return value;
-    }
-
-    @Override
-    public Length addLength(Length lengthToBeAdded) {
-        return new Inch(this.convertTo(lengthToBeAdded).getValue()+this.getValue());
+    public  double getConversionFactor() {
+        return CONVERSION_FACTOR;
     }
 
     @Override
-    public Centimeter convertToCentimeter() {
-        Centimeter l=new Centimeter(value*CONVERSION_FACTOR);
-        return l;
+    public Length convertToBase() {
+        return new Centimeter(this.getValue()*CONVERSION_FACTOR);
     }
 
     @Override
-    public Inch convertTo(Length fromLength) {
-        Centimeter cm=fromLength.convertToCentimeter();
-        return new Inch(cm.getValue()/CONVERSION_FACTOR);
+    public Length clone(double value) {
+        return new Inch(value);
     }
+
+
 }

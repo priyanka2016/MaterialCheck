@@ -1,10 +1,8 @@
 /**
  * Created by sai on 10/08/2015.
  */
-public class Meter implements Length{
+public class Meter extends Length{
 
-
-    private double value;
     private static final double CONVERSION_FACTOR=100;
 
     public Meter()
@@ -12,29 +10,21 @@ public class Meter implements Length{
 
     }
     public Meter(double value) {
-        this.value = value;
-
+        super(value);
     }
 
-    public double getValue() {
-        return value;
-    }
-
-    @Override
-    public Length addLength(Length lengthToBeAdded) {
-        return new Meter(this.convertTo(lengthToBeAdded).getValue()+this.getValue());
+    public  double getConversionFactor() {
+        return CONVERSION_FACTOR;
     }
 
     @Override
-    public Centimeter convertToCentimeter() {
-        Centimeter l=new Centimeter(value*CONVERSION_FACTOR);
-        return l;
+    public Length convertToBase() {
+        return new Centimeter(this.getValue()*CONVERSION_FACTOR);
     }
 
     @Override
-    public Meter convertTo(Length fromLength) {
-        Centimeter cm=fromLength.convertToCentimeter();
-        return new Meter(cm.getValue()/CONVERSION_FACTOR);
+    public Length clone(double value) {
+        return new Meter(value);
     }
 
 

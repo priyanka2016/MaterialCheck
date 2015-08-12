@@ -3,36 +3,30 @@
  */
 public class Tbsp extends Volume {
 
-    private double value;
-    private static final double CONVERSION_FACTOR=3;
 
-    public Tbsp(double value) {
-        this.value = value;
-    }
+    private static final double CONVERSION_FACTOR=3;
 
     public Tbsp()
     {
 
     }
-    @Override
-    public double getValue() {
-        return value;
+    public Tbsp(double value) {
+        super(value);
     }
 
     @Override
-    public Tsp convertToTsp() {
-        Tsp v=new Tsp(value*CONVERSION_FACTOR);
-        return v;
+    public Volume convertToBase() {
+        return new Tsp(this.getValue()*CONVERSION_FACTOR);
+
     }
 
     @Override
-    public Volume convertTo(Volume fromVolume) {
-        Tsp tsp=fromVolume.convertToTsp();
-        return new Tbsp(tsp.getValue()/CONVERSION_FACTOR);
+    public  double getConversionFactor() {
+        return CONVERSION_FACTOR;
     }
 
     @Override
-    public Volume addVolume(Volume volumeToBeAdded) {
-        return new Tbsp(this.convertTo(volumeToBeAdded).getValue()+this.getValue());
+    public Volume clone(double value) {
+        return new Tbsp(value);
     }
 }

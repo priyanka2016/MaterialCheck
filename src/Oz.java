@@ -3,37 +3,29 @@
  */
 public class Oz extends Volume {
 
-    private double value;
+
     private static final double CONVERSION_FACTOR=6;
-
-    public Oz(double value) {
-        this.value = value;
-    }
-
-    @Override
-    public double getValue() {
-        return value;
-    }
 
     public Oz()
     {
 
     }
-
     @Override
-    public Tsp convertToTsp() {
-        Tsp v=new Tsp(value*CONVERSION_FACTOR);
-        return v;
+    public  double getConversionFactor() {
+        return CONVERSION_FACTOR;
     }
 
     @Override
-    public Volume convertTo(Volume fromVolume) {
-        Tsp tsp=fromVolume.convertToTsp();
-        return new Oz(tsp.getValue()/CONVERSION_FACTOR);
+    public Volume clone(double value) {
+        return new Oz(value);
+    }
+
+    public Oz(double value) {
+        super(value);
     }
 
     @Override
-    public Volume addVolume(Volume volumeToBeAdded) {
-        return new Oz(this.convertTo(volumeToBeAdded).getValue()+this.getValue());
+    public Volume convertToBase() {
+        return new Tsp(this.getValue()*CONVERSION_FACTOR);
     }
 }

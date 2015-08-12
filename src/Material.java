@@ -5,7 +5,7 @@ public class Material {
 
     public static boolean compareMaterial(Length cm,Length m)
     {
-        if(m.convertToCentimeter().equals(cm.convertToCentimeter()))
+        if(m.convertToBase().equals(cm.convertToBase()))
         {
             return true;
         }

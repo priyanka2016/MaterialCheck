@@ -1,39 +1,29 @@
 /**
  * Created by sai on 11/08/2015.
  */
-public class Feet implements Length {
+public class Feet extends Length {
 
-    private double value;
     public static final double CONVERSION_FACTOR=100;
-
 
     public Feet()
     {
 
     }
     public Feet(double value) {
-        this.value = value;
+        super(value);
     }
 
-    public double getValue() {
-        return value;
-    }
-
-
-    @Override
-    public Length addLength(Length lengthToBeAdded) {
-        return new Feet(this.convertTo(lengthToBeAdded).getValue()+this.getValue());
+    public  double getConversionFactor() {
+        return CONVERSION_FACTOR;
     }
 
     @Override
-    public Centimeter convertToCentimeter() {
-        Centimeter l=new Centimeter(value*CONVERSION_FACTOR);
-        return l;
+    public Length convertToBase() {
+        return new Centimeter(this.getValue()*CONVERSION_FACTOR);
     }
 
     @Override
-    public Feet convertTo(Length fromLength) {
-        Centimeter cm=fromLength.convertToCentimeter();
-        return new Feet(cm.getValue()/CONVERSION_FACTOR);
+    public Length clone(double value) {
+        return new Feet(value);
     }
 }

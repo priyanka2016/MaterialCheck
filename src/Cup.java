@@ -3,37 +3,30 @@
  */
 public class Cup extends Volume{
 
-    private double value;
+
     private static final double CONVERSION_FACTOR=48;
 
-    public Cup(double value) {
-        this.value = value;
-    }
-
-    @Override
-    public double getValue() {
-        return value;
-    }
 
     public Cup()
     {
 
     }
-
-    @Override
-    public Tsp convertToTsp() {
-        Tsp v=new Tsp(value*CONVERSION_FACTOR);
-        return v;
+    public Cup(double value) {
+        super(value);
     }
 
     @Override
-    public Volume convertTo(Volume fromVolume) {
-        Tsp tsp=fromVolume.convertToTsp();
-        return new Cup(tsp.getValue()/CONVERSION_FACTOR);
+    public Volume convertToBase() {
+        return new Tsp(this.getValue()*CONVERSION_FACTOR);
     }
 
     @Override
-    public Volume addVolume(Volume volumeToBeAdded) {
-        return new Cup(this.convertTo(volumeToBeAdded).getValue()+this.getValue());
+    public  double getConversionFactor() {
+        return CONVERSION_FACTOR;
+    }
+
+    @Override
+    public Volume clone(double value) {
+        return new Cup(value);
     }
 }

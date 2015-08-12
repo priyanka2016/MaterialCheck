@@ -1,51 +1,45 @@
 /**
  * Created by sai on 10/08/2015.
  */
-public class Centimeter implements Length {
+public class Centimeter extends Length {
 
-    private double value;
+
+    private static final double CONVERSION_FACTOR=1;
 
     public Centimeter()
     {
 
     }
-
-    public double getValue() {
-        return value;
-    }
-
     public Centimeter(double value) {
-        this.value = value;
+        super(value);
     }
 
     @Override
-    public Centimeter convertToCentimeter() {
-        return this;
+    public Length convertToBase() {
+        return new Centimeter(this.getValue()*CONVERSION_FACTOR);
     }
 
-    @Override
-    public Centimeter convertTo(Length fromLength) {
-        Centimeter cm=fromLength.convertToCentimeter();
-        return cm;
+    public double getConversionFactor() {
+        return CONVERSION_FACTOR;
     }
 
+
     @Override
-    public Length addLength(Length lengthToBeAdded) {
-
-        return new Centimeter(this.convertTo(lengthToBeAdded).getValue()+this.getValue());
-
+    public Length clone(double value) {
+       return new Centimeter(value);
     }
 
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Centimeter that = (Centimeter) o;
+        Centimeter centimeter = (Centimeter) o;
 
-        return Double.compare(that.value, value) == 0;
+        return Double.compare(centimeter.getValue(), getValue()) == 0;
 
     }
+
+
 
 
 }
